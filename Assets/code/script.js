@@ -3,7 +3,7 @@
 var startButton = document.getElementById('start-button');
 var questionContainerEle = document.getElementById('question-container');
 var randomQuestions, currentQuesIndex;
-var questionElements = document.getElementById('questions');
+let questionElements = document.getElementById('questions');
 var answerButtonsElements = document.getElementById('buttons');
 
 // Event Listener List
@@ -34,7 +34,7 @@ function startGame() {
 }
 
 function newQuestion(question) {
-
+    questionElements.innerText = question.question;
 }
 
 function nextQuestion() {
