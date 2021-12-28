@@ -1,6 +1,8 @@
 // Variables List
 
 var startButton = document.getElementById('start-button');
+var welcomeMessage = document.getElementById('welcome-page');
+var nextButton = document.getElementById('next-question');
 var questionContainerEle = document.getElementById('question-container');
 var randomQuestions, currentQuesIndex;
 let questionElements = document.getElementById('questions');
@@ -8,6 +10,10 @@ var answerButtonsElements = document.getElementById('buttons');
 
 // Event Listener List
 startButton.addEventListener("click", startGame);
+nextButton.addEventListener('click', () => {
+    currentQuesIndex++;
+    nextQuestion();
+})
 
 
 // Questions List
@@ -21,13 +27,28 @@ var questionsList = [
             { text: '<javascript>', correct: false},
             { text: 'scripting>', correct: false},
         ]
-    }
+    },
+
+    {
+        question: 'Where is the correct place to insert a JavaScript?',
+        answers: [
+            { text: 'the <body> section', correct: false},
+            { text: 'the <head> section', correct: true},
+            { text: 'both the <head> + <body> section', correct: false},
+            { text: 'the <footer> section', correct: false},
+        ]
+    },
+
+
 ]
 
 // Functions List
 
+welcomeMessage.classList.remove("hide");
+
 function startGame() {
     console.log("Start Quiz");
+    welcomeMessage.classList.add("hide");
     startButton.classList.add("hide");
     randomQuestions = questionsList.sort(() => Math.random() - .5);
     currentQuesIndex = 0;
@@ -69,7 +90,14 @@ function answerSelected(i) {
     setStatusClass(document.body, ifCorrect);
     Array.from(answerButtonsElements.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
-    })
+    });
+    
+    if (randomQuestions.length > currentQuesIndex + 1) {
+        nextButton.classList.remove('hide');
+    } else {
+        startButton.innerHTML('Restart Quiz!');
+        startButton.classList.remove('hide');
+    }
 }
 
 function setStatusClass(element, correct) {
