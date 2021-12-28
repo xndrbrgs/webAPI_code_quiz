@@ -17,7 +17,9 @@ var questionsList = [
         question: 'Inside which HTML element do we put the JS?',
         answers: [
             { text: '<js>', correct: false},
-            { text: '<script>', correct: true}
+            { text: '<script>', correct: true},
+            { text: '<javascript>', correct: false},
+            { text: 'scripting>', correct: false},
         ]
     }
 ]
@@ -62,5 +64,24 @@ function resetButtons() {
 
 
 function answerSelected(i) {
-    var 
+    var tickedButton = i.target;
+    var ifCorrect = tickedButton.dataset.correct;
+    setStatusClass(document.body, ifCorrect);
+    Array.from(answerButtonsElements.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+}
+
+function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add('correct');
+    } else {
+        element.classList.add('wrong');
+    }
+}
+
+function clearStatusClass(element) {
+    element.classList.remove('correct');
+    element.classList.remove('wrong');
 }

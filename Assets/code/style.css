@@ -60,7 +60,7 @@ body {
     background-color: var(--wrong);
 }
 
-.start-button {
+.start-button, .next-question {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
