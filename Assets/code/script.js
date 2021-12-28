@@ -33,14 +33,34 @@ function startGame() {
     nextQuestion();
 }
 
-function newQuestion(question) {
-    questionElements.innerText = question.question;
-}
-
 function nextQuestion() {
+    resetButtons();
     newQuestion(randomQuestions[currentQuesIndex]);
 }
 
-function answerSelected() {
+function newQuestion(question) {
+    questionElements.innerText = question.question;
+    question.answers.forEach(answer => {
+        var button = document.createElement('button');
+        button.innerText = answer.text;
+        button.classList.add('buttons');
+        
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener('click', answerSelected);
+        answerButtonsElements.appendChild(button);
+    });
+}
 
+function resetButtons() {
+    while (answerButtonsElements.firstChild) {
+        answerButtonsElements.removeChild
+            (answerButtonsElements.firstChild);
+    }  
+}
+
+
+function answerSelected(i) {
+    var 
 }
