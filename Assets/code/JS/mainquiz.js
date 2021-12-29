@@ -39,6 +39,35 @@ var questionsList = [
         ]
     },
 
+    {
+        question: 'What is the correct JS syntax to write "Hello World" in the console?',
+        answers: [
+            { text: '("Hello World);', correct: false},
+            { text: 'echo "Hello World";', correct: false},
+            { text: 'document.write("Hello World");', correct: false},
+            { text: 'console.log("Hello World");', correct: true},
+        ]
+    },
+
+    {
+        question: 'How do you write "Stop!" in an alert box?',
+        answers: [
+            { text: 'alertBox("Stop!")', correct: false},
+            { text: 'msg("Stop!")', correct: false},
+            { text: 'alert("Stop!)', correct: true},
+            { text: 'modal("Stop!)', correct: false},
+        ]
+    },
+
+    {
+        question: 'What data type is NOT supported by JS?',
+        answers: [
+            { text: 'Array', correct: true},
+            { text: 'Undefined', correct: false},
+            { text: 'Symbol', correct: false},
+            { text: 'Boolean', correct: false},
+        ]
+    },
 
 ]
 
@@ -95,8 +124,9 @@ function answerSelected(i) {
     if (randomQuestions.length > currentQuesIndex + 1) {
         nextButton.classList.remove('hide');
     } else {
-        startButton.innerHTML('Restart Quiz!');
+        startButton.innerHTML = 'Restart Quiz!';
         startButton.classList.remove('hide');
+        nextButton.classList.add('hide');
     }
 }
 
@@ -112,4 +142,8 @@ function setStatusClass(element, correct) {
 function clearStatusClass(element) {
     element.classList.remove('correct');
     element.classList.remove('wrong');
+}
+
+function getScore() {
+    
 }

@@ -11,6 +11,8 @@
     --correct: #80ff80;
 }
 
+/* Body Section */
+
 body {
     padding: 0;
     margin: 0;
@@ -29,6 +31,14 @@ body {
     border-color: black;
     padding: 20px;
     box-shadow: 0 0 20px 2px;
+}
+
+.welcome-page {
+    text-align: center;
+}
+
+.welcome-page h2 {
+    padding: 0 0 20px 0;
 }
 
 .button-grid {
