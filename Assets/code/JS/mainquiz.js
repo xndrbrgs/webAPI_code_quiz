@@ -3,6 +3,7 @@
 var startButton = document.getElementById('start-button');
 var welcomeMessage = document.getElementById('welcome-page');
 var nextButton = document.getElementById('next-question');
+var homeButton = document.getElementById('home-button');
 var questionContainerEle = document.getElementById('question-container');
 var randomQuestions, currentQuesIndex;
 let questionElements = document.getElementById('questions');
@@ -124,8 +125,7 @@ function answerSelected(i) {
     if (randomQuestions.length > currentQuesIndex + 1) {
         nextButton.classList.remove('hide');
     } else {
-        startButton.innerHTML = 'Restart Quiz!';
-        startButton.classList.remove('hide');
+        homeButton.classList.remove('hide');
         nextButton.classList.add('hide');
     }
 }
