@@ -4,30 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/mainpage.css">
     <script defer src="../JS/mainquiz.js"></script>
+    <script src="https://kit.fontawesome.com/2d2ec9e6b7.js" crossorigin="anonymous"></script>
     <title>Quiz Section</title>
 </head>
 <body>
     <div class="container">
-        <div class="welcome-page hide" id="welcome-page">
-            <h1>Javascript Quiz Challenge!</h1>
-            <h2>Answer questions correctly and try to get to the top of the leaderboard!</h2>
-        </div>
-
-        <div id="question-container" class="hide">
-            <div id="questions">Question</div>
-            <div id="buttons" class="button-grid">
-                <button class="buttons">Answer 1</button>
-                <button class="buttons">Answer 2</button>
-                <button class="buttons">Answer 3</button>
-                <button class="buttons">Answer 4</button>
+        <div id="home" class="home">
+            <h1>Javascript Quiz!</h1>
+            <div id="buttons" class="buttons">
+                <a href="../HTML/quizmain.html" class="btn">Take The Quiz</a>
+                <a href="../HTML/quizmain.html" class="btn" id="hs-btn">High Scores <i class="fas fa-crown"></i></a>
             </div>
-        </div>
-        <div class="controls">
-            <button class="start-button buttons" id="start-button">Start</button>
-            <button class="next-question buttons hide" id="next-question">Next</button>
-        </div>
+        </div>    
     </div>
 </body>
 </html>
