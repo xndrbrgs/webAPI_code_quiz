@@ -8,8 +8,7 @@ var questionContainerEle = document.getElementById('question-container');
 var randomQuestions, currentQuesIndex;
 let questionElements = document.getElementById('questions');
 var answerButtonsElements = document.getElementById('buttons');
-var score = 0;
-var questionCounter = 0;
+var initialsEl = document.querySelector("#initials");
 
 // Event Listener List
 startButton.addEventListener("click", startGame);
@@ -18,6 +17,10 @@ nextButton.addEventListener('click', () => {
     nextQuestion();
 })
 
+// Quiz Variables
+
+// var time = question.length * 10;
+// var timerId;
 
 // Questions List
 
@@ -80,8 +83,8 @@ welcomeMessage.classList.remove("hide");
 
 function startGame() {
     console.log("Start Quiz");
-    var score = 0;
-    var questionCounter = 0;
+    // timerId = setInterval(clockTick, 1000);
+    // timerId.textContent = time;
     welcomeMessage.classList.add("hide");
     startButton.classList.add("hide");
     randomQuestions = questionsList.sort(() => Math.random() - .5);
@@ -121,7 +124,6 @@ function resetButtons() {
 function answerSelected(i) {
     var tickedButton = i.target;
     var ifCorrect = tickedButton.dataset.correct;
-    questionCounter++;
     setStatusClass(document.body, ifCorrect);
     Array.from(answerButtonsElements.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
@@ -150,8 +152,7 @@ function clearStatusClass(element) {
 }
 
 function getScore() {
-    console.log(questionCounter);
-    return questionCounter;
+    
 }
 
 // Timer

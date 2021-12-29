@@ -5,14 +5,6 @@
     font-family: 'Roboto Mono', monospace;
 }
 
-:root {
-    --normal: #cceeff;
-    --wrong: #ff4d4d;
-    --correct: #80ff80;
-}
-
-/* Body Section */
-
 body {
     padding: 0;
     margin: 0;
@@ -31,60 +23,37 @@ body {
     border-color: black;
     padding: 20px;
     box-shadow: 0 0 20px 2px;
-}
-
-.welcome-page {
     text-align: center;
 }
 
-.welcome-page h2 {
-    padding: 0 0 20px 0;
-}
-
-.button-grid {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 10px;
-    margin: 20px 0;
-}
-
-.buttons {
-    --backcolor: var(--normal);
-    background-color: var(--normal);
-    border-radius: 5px;
-    border-color: black;
-    box-shadow: 0 0 8px;
-    padding: 5px 10px;
-    outline: none;
-}
-
-.buttons:hover {
-    border-color: rgb(95, 119, 255);
-    cursor: pointer;
-}
-
-.buttons.correct {
-    background-color: var(--correct);
-}
-
-.buttons.wrong {
-    background-color: var(--wrong);
-}
-
-.start-button, .next-question, .go-home, #submit-btn {
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 10px 20px;
-}
-
-
-.controls {
+a {
+    color: black;
+    text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.hide {
-    display: none;
+.button {
+    background-color: #cceeff;
+    border-radius: 5px;
+    border-color: black;
+    box-shadow: 0 0 8px;
+    padding: 5px 10px;
+    margin: 10px;
+    outline: none;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
+.button:hover {
+    border-color: rgb(95, 119, 255);
+    transition: 200ms;
+    cursor: pointer;
+}
+
+#submit-btn {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
