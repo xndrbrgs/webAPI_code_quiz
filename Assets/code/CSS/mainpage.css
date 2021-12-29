@@ -47,6 +47,8 @@ a {
 
 .buttons:hover {
     border-color: rgb(95, 119, 255);
+    transition: 200ms;
+    cursor: pointer;
 }
 
 .home {
