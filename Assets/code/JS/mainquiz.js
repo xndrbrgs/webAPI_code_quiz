@@ -147,3 +147,6 @@ function clearStatusClass(element) {
 function getScore() {
     
 }
+
+// Timer
+
