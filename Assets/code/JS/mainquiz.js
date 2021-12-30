@@ -27,7 +27,7 @@ var questionsList = [
       { text: "<js>", correct: false },
       { text: "<script>", correct: true },
       { text: "<javascript>", correct: false },
-      { text: "scripting>", correct: false },
+      { text: "<scripting>", correct: false },
     ],
   },
 
@@ -75,7 +75,7 @@ var questionsList = [
 
 // Quiz Variables
 
-var time = questionsList.length * 16;
+var time = questionsList.length * 15;
 var timerId;
 
 // Functions List
@@ -123,8 +123,8 @@ function resetButtons() {
 function answerSelected(i) {
   var tickedButton = i.target;
   var ifCorrect = tickedButton.dataset.correct;
-    if (randomQuestions[currentQuesIndex].correct === false) {
-        time -= 10;
+    if (ifCorrect === randomQuestions[currentQuesIndex].correct) {
+        time -= 15;
 
         if (time < 0) {
             time = 0;
@@ -166,6 +166,9 @@ function clockTick() {
   timerEl.textContent = time;
 
   if (time <= 0) {
+    nextButton.classList.add("hide");
+    questionContainerEle.classList.add('hide');
+    homeButton.classList.remove("hide");
     quizEnds();
   }
 }
@@ -174,4 +177,10 @@ function quizEnds() {
   clearInterval(timerId);
   var finalScoreEl = document.getElementById("final-score");
   finalScoreEl.textContent = time;
+}
+
+// Scores
+
+function highScores() {
+    
 }
