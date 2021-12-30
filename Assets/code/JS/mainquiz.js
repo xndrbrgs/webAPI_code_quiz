@@ -11,6 +11,7 @@ var answerButtonsElements = document.getElementById("buttons");
 var initialsEl = document.querySelector("#initials");
 var timerEl = document.querySelector("#time");
 var submitButton = document.querySelector("submit-btn");
+var finalScoreEl = document.getElementById("finalscore");
 
 // Event Listener List
 startButton.addEventListener("click", startGame);
@@ -178,7 +179,8 @@ function clockTick() {
 
 function quizEnds() {
   clearInterval(timerId);
-  var finalScoreEl = document.querySelector("final-score");
+  questionContainerEle.classList.add("hide");
+  console.log(time);
   finalScoreEl.textContent = time;
 }
 
@@ -208,28 +210,5 @@ function enterCheck (Event) {
     }
 };
 
-submitButton.onclick = savedhighScores;
+submitButton.addEventListener("click", savedhighScores); 
 initialsEl.onkeyup = enterCheck;
-
-function retrieveHighScores () {
-    var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
-    highscores.sort(function(a, b) {
-        return b.score - a.score;
-    });
-
-    highscores.forEach(function(score) {
-        var listEl = document.createElement("li");
-        listEl.textContent = score.initials + " = " + score.score;
-
-        var ordListEl = document.getElementById("highscores");
-        ordListEl.appendChild(listEl);
-    });
-}
-
-function clearScores () {
-    window.localStorage.removeItem("highscores");
-    window.location.reload();
-}
-
-document.getElementById("clear").onclick = clearScores;
-retrieveHighScores();
