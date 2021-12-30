@@ -1,11 +1,11 @@
 function retrieveHighScores () {
-    var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+    var scoresList = JSON.parse(window.localStorage.getItem("highscores")) || [];
 
-    highscores.sort(function(a, b) {
+    scoresList.sort(function(a, b) {
         return b.score - a.score;
       });
 
-    highscores.forEach(function(score) {
+    scoresList.forEach(function(score) {
         var listEl = document.createElement("li");
         listEl.textContent = score.initials + " = " + score.score;
 
@@ -19,11 +19,6 @@ function clearScores () {
     window.location.reload();
 }
 
-function clearKey () {
-    var clearBtn = document.getElementById("clear");
-    clearBtn.addEventListener("click", clearScores);
-    console.log("clear");
-}
-
+document.getElementById('clear').onclick = clearScores;
 retrieveHighScores();
 

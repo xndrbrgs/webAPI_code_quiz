@@ -192,15 +192,15 @@ function savedhighScores() {
   var initials = initialsEl.value.trim();
 
   if (initials !== "") {
-    var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+    var scoresList = JSON.parse(window.localStorage.getItem("highscores")) || [];
 
     var newScores = {
       score: time,
       initials: initials,
     };
 
-    highscores.push(newScores);
-    window.localStorage.setItem("highscores", JSON.stringify(highscores));
+    scoresList.push(newScores);
+    window.localStorage.setItem("highscores", JSON.stringify(scoresList));
 
     window.location.href = "scores.html";
   }
