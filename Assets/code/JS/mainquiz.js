@@ -17,11 +17,6 @@ nextButton.addEventListener('click', () => {
     nextQuestion();
 })
 
-// Quiz Variables
-
-// var time = question.length * 10;
-// var timerId;
-
 // Questions List
 
 var questionsList = [
@@ -77,20 +72,25 @@ var questionsList = [
 
 ]
 
+// Quiz Variables
+
+var time = questionsList.length * 10;
+var timerId;
+
 // Functions List
 
 welcomeMessage.classList.remove("hide");
 
 function startGame() {
     console.log("Start Quiz");
-    // timerId = setInterval(clockTick, 1000);
-    // timerId.textContent = time;
     welcomeMessage.classList.add("hide");
     startButton.classList.add("hide");
     randomQuestions = questionsList.sort(() => Math.random() - .5);
     currentQuesIndex = 0;
     questionContainerEle.classList.remove("hide");
     nextQuestion();
+    timerId = setInterval(clockTick, 1000);
+    timerId.textContent = time;
 }
 
 function nextQuestion() {
