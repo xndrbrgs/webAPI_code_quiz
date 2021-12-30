@@ -10,6 +10,7 @@ let questionElements = document.getElementById("questions");
 var answerButtonsElements = document.getElementById("buttons");
 var initialsEl = document.querySelector("#initials");
 var timerEl = document.querySelector("#time");
+var submitButton = document.querySelector("submit-btn");
 
 // Event Listener List
 startButton.addEventListener("click", startGame);
@@ -123,15 +124,16 @@ function resetButtons() {
 function answerSelected(i) {
   var tickedButton = i.target;
   var ifCorrect = tickedButton.dataset.correct;
-    if (ifCorrect === randomQuestions[currentQuesIndex].correct) {
-        time -= 15;
+  if (ifCorrect === randomQuestions[currentQuesIndex].correct) {
+    time -= 15;
 
-        if (time < 0) {
-            time = 0;
-        }
+    if (time < 0) {
+      time = 0;
+    }
 
-        timerEl.textContent = time;     
-    } 
+    timerEl.textContent = time;
+  };
+
   setStatusClass(document.body, ifCorrect);
   Array.from(answerButtonsElements.children).forEach((button) => {
     setStatusClass(button, button.dataset.correct);
@@ -142,6 +144,7 @@ function answerSelected(i) {
   } else {
     homeButton.classList.remove("hide");
     nextButton.classList.add("hide");
+    quizEnds();
   }
 }
 
@@ -167,7 +170,7 @@ function clockTick() {
 
   if (time <= 0) {
     nextButton.classList.add("hide");
-    questionContainerEle.classList.add('hide');
+    questionContainerEle.classList.add("hide");
     homeButton.classList.remove("hide");
     quizEnds();
   }
@@ -175,12 +178,58 @@ function clockTick() {
 
 function quizEnds() {
   clearInterval(timerId);
-  var finalScoreEl = document.getElementById("final-score");
+  var finalScoreEl = document.querySelector("final-score");
   finalScoreEl.textContent = time;
 }
 
 // Scores
 
-function highScores() {
-    
+function savedhighScores() {
+  var initials = initialsEl.value.trim();
+
+  if (initials !== "") {
+    var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+    var newScores = {
+      score: time,
+      initials: initials,
+    };
+
+    highscores.push(newScores);
+    window.localStorage.setItem("highscores", JSON.stringify(highscores));
+
+    window.location.href = "scores.html";
+  }
 }
+
+function enterCheck (Event) {
+    if (Event.key === "Enter") {
+        savedhighScores();
+    }
+};
+
+submitButton.onclick = savedhighScores;
+initialsEl.onkeyup = enterCheck;
+
+function retrieveHighScores () {
+    var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+    highscores.sort(function(a, b) {
+        return b.score - a.score;
+    });
+
+    highscores.forEach(function(score) {
+        var listEl = document.createElement("li");
+        listEl.textContent = score.initials + " = " + score.score;
+
+        var ordListEl = document.getElementById("highscores");
+        ordListEl.appendChild(listEl);
+    });
+}
+
+function clearScores () {
+    window.localStorage.removeItem("highscores");
+    window.location.reload();
+}
+
+document.getElementById("clear").onclick = clearScores;
+retrieveHighScores();
