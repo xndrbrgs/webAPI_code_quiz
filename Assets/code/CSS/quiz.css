@@ -24,6 +24,7 @@ body {
 }
 
 .container {
+    position: relative;
     width: 800px;
     max-width: 80%;
     border-style: solid;
@@ -31,6 +32,13 @@ body {
     border-color: black;
     padding: 20px;
     box-shadow: 0 0 20px 2px;
+}
+
+.timer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
 }
 
 .welcome-page {
